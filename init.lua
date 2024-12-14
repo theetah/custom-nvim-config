@@ -56,5 +56,10 @@ require("lazy").setup({
   },
 })
 
+-- I can see why folke had an issue with the
+-- "lualine require madness"...  why do I have to do this?
+---@diagnostic disable-next-line: missing-parameter
+require("lualine").setup()
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

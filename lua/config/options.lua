@@ -1,7 +1,7 @@
 local options = {
   relativenumber = true,
   -- Enable mouse mode, can be useful for resizing splits for example!
-  mouse = 'a',
+  mouse = "a",
   -- Don't show the mode, since it's already in the status line
   showmode = false,
   breakindent = true,
@@ -11,7 +11,7 @@ local options = {
   ignorecase = true,
   smartcase = true,
   -- Keep signcolumn on by default
-  signcolumn = 'yes',
+  signcolumn = "yes",
   -- Decrease update time
   updatetime = 250,
   -- Decrease mapped sequence wait time
@@ -38,5 +38,5 @@ vim.wo.wrap = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
+  vim.opt.clipboard = "unnamedplus"
 end)
