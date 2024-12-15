@@ -8,3 +8,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+  desc = "Clear the command bar after some inactivity occurs.",
+  group = vim.api.nvim_create_augroup("commandline-clear", { clear = true }),
+  -- very messy, but it works
+  callback = function()
+    vim.defer_fn(function()
+      vim.cmd('echom ""')
+    end, 2000)
+  end,
+})

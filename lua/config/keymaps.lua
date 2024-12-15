@@ -8,6 +8,15 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+--[[
+-- Objectively a terrible keybind.
+-- Do not do this. I do not use the
+-- 'x' keybind for its intended
+-- purpose, nor do I intend to
+-- learn to do so.
+--]]
+vim.keymap.set("n", "x", [["_dl]])
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
