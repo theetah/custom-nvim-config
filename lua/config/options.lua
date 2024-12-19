@@ -1,4 +1,4 @@
-local options = {
+local opt = {
   relativenumber = true,
   -- Enable mouse mode, can be useful for resizing splits for example!
   mouse = "a",
@@ -26,12 +26,27 @@ local options = {
   scrolloff = 4,
 }
 
-for k, v in pairs(options) do
+for k, v in pairs(opt) do
   vim.opt[k] = v
 end
 
--- sneaky window thing, don't want to make a file for this single option
-vim.wo.wrap = false
+local bo = {
+  tabstop = 4,
+  shiftwidth = 4,
+  expandtab = true,
+}
+
+for k, v in pairs(bo) do
+  vim.bo[k] = v
+end
+
+local wo = {
+  wrap = false,
+}
+
+for k, v in pairs(wo) do
+  vim.wo[k] = v
+end
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
