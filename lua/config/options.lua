@@ -1,5 +1,6 @@
 local opt = {
   relativenumber = true,
+  number = true,
   -- Enable mouse mode, can be useful for resizing splits for example!
   mouse = "a",
   -- Don't show the mode, since it's already in the status line
