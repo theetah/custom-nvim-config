@@ -9,8 +9,8 @@ return {
       vim.api.nvim_set_hl(0, "IndentBlanklineFocused", { fg = "#404447" })
     end)
     require("ibl").setup({
-      indent = { highlight = { "IndentBlanklineUnfocused" } },
-      scope = { highlight = { "IndentBlanklineFocused" } },
+      -- indent = { highlight = { "IndentBlanklineUnfocused" } },
+      -- scope = { highlight = { "IndentBlanklineFocused" } },
     })
   end,
 }

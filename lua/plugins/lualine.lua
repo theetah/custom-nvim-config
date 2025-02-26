@@ -37,7 +37,7 @@ local theme = {
 
 local config = {
   options = {
-    theme = theme,
+    -- theme = theme,
     component_separators = "",
     section_separators = { left = "", right = "" },
   },

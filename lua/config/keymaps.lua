@@ -1,7 +1,3 @@
--- This config file will only include keymaps for anything *not* plugin-related.
--- To configure the keymaps for a specific plugin, refer to that plugin's file and documentation.
-
---  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
@@ -16,17 +12,17 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 --]]
 vim.keymap.set("n", "x", [["_dl]])
 
--- or just use <C-\><C-n> to exit terminal mode
--- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+-- use <C-\><C-n> to exit terminal mode
 
--- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
---
---  See `:help wincmd` for a list of all window commands
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
+-- Custom quick fix keybind
+
+vim.keymap.set("n", "<leader>n", "ye/<C-r>+<CR>", { desc = "Find next match underneath the cursor" })
+vim.keymap.set("n", "<leader><S-n>", "ye/<C-r>+<CR><S-n><S-n>", { desc = "Find previous match underneath the cursor" })
 
 -- PLUGIN SPECIFIC
 
