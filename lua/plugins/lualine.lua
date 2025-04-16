@@ -44,9 +44,9 @@ local config = {
   sections = {
     lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
     lualine_b = { "filename" },
-    lualine_c = { "branch" },
+    lualine_c = { { "navic", color_correction = "static", navic_opts = { highlight = true } } },
     lualine_x = { "filetype" },
-    lualine_y = { "progress" },
+    lualine_y = { "branch" },
     lualine_z = {
       { "location", separator = { right = "" }, left_padding = 2 },
     },
@@ -54,10 +54,10 @@ local config = {
   inactive_sections = {
     lualine_a = { "filename" },
     lualine_b = {},
-    lualine_c = {},
+    lualine_c = { "navic" },
     lualine_x = {},
     lualine_y = {},
-    lualine_z = { "location" },
+    lualine_z = { "branch" },
   },
   tabline = {},
   extensions = {},
