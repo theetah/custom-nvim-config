@@ -17,5 +17,9 @@ return {
   },
   opts = {
     lsp = { auto_attach = true },
+    window = {
+      size = { width = "75%", height = "40%" },
+      scrolloff = 2,
+    },
   },
 }

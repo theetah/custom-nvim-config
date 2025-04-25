@@ -29,3 +29,5 @@ vim.keymap.set("n", "<leader><S-n>", "ye/<C-r>+<CR><S-n><S-n>", { desc = "Find p
 vim.keymap.set("n", "<leader>bd", "<cmd>bdelete!<CR>", { desc = "Delete the current buffer" })
 
 vim.keymap.set("n", "<leader>fp", "<cmd>ProjectMgr<CR>", { desc = "Open the project manager" })
+
+vim.keymap.set("n", "<leader>fl", "<cmd>Navbuddy<CR>", { desc = "Open Navbuddy" })
