@@ -25,6 +25,9 @@ return { -- Autocompletion
     },
     "saadparwaiz1/cmp_luasnip",
 
+    -- for icons next to snippets
+    "onsails/lspkind.nvim",
+
     -- Adds other completion capabilities.
     --  nvim-cmp does not ship with all sources by default. They are split
     --  into multiple repos for maintenance purposes.
@@ -35,6 +38,7 @@ return { -- Autocompletion
     -- See `:help cmp`
     local cmp = require("cmp")
     local luasnip = require("luasnip")
+    local lspkind = require("lspkind")
     luasnip.config.setup({})
 
     cmp.setup({
@@ -43,6 +47,23 @@ return { -- Autocompletion
           luasnip.lsp_expand(args.body)
         end,
       },
+
+      formatting = {
+        fields = { "abbr", "kind", "menu" },
+        format = lspkind.cmp_format({
+          mode = "symbol", -- show only symbol annotations
+          maxwidth = {
+            -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            -- can also be a function to dynamically calculate max width such as
+            -- menu = function() return math.floor(0.45 * vim.o.columns) end,
+            menu = 50, -- leading text (labelDetails)
+            abbr = 50, -- actual suggestion item
+          },
+          ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+          show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+        }),
+      },
+
       completion = { completeopt = "menu,menuone,noinsert" },
 
       -- For an understanding of why these mappings were
