@@ -165,6 +165,8 @@ return {
       -- tsserver = {},
       --
 
+      ts_ls = {},
+
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},

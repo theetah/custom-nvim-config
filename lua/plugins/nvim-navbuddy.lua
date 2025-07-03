@@ -10,30 +10,41 @@ plugin to break upon use.
 
 --]]
 return {
-    "SmiteshP/nvim-navbuddy",
-    dependencies = {
-        "MunifTanjim/nui.nvim",
-        "numToStr/Comment.nvim",
-        "nvim-telescope/telescope.nvim",
-        {
-            "SmiteshP/nvim-navic",
-            dependencies = {
-                "neovim/nvim-lspconfig",
-            },
-            opts = {
-                highlight = true,
-                lsp = { auto_attach = true },
-            },
-        },
-    },
-    opts = {
+  "SmiteshP/nvim-navbuddy",
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+    "numToStr/Comment.nvim",
+    "nvim-telescope/telescope.nvim",
+    {
+      "SmiteshP/nvim-navic",
+      dependencies = {
+        "neovim/nvim-lspconfig",
+      },
+      opts = {
+        highlight = true,
         lsp = { auto_attach = true },
-        window = {
-            size = { width = "75%", height = "40%" },
-            scrolloff = 2,
-        },
         icons = {
-            Variable = "󰫧 ",
+          Variable = " ",
+          Boolean = " ",
+          Object = " ",
+          Class = " ",
         },
+        separator = "   ",
+      },
     },
+  },
+  opts = {
+    lsp = { auto_attach = true },
+    window = {
+      size = { width = "75%", height = "40%" },
+      scrolloff = 2,
+    },
+    icons = {
+      Variable = " ",
+      Boolean = " ",
+      String = " ",
+      Object = " ",
+      Class = " ",
+    },
+  },
 }

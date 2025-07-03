@@ -21,8 +21,6 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 
 -- PLUGIN SPECIFIC
 
-vim.keymap.set("n", "<leader>bd", "<cmd>bdelete!<CR>", { desc = "Delete the current buffer" })
-
-vim.keymap.set("n", "<leader>fp", "<cmd>ProjectMgr<CR>", { desc = "Open the project manager" })
-
 vim.keymap.set("n", "<leader>fl", "<cmd>Navbuddy<CR>", { desc = "Open Navbuddy" })
+
+vim.keymap.set("n", "<leader>fp", "<cmd>ProjectMgr<CR>", { desc = "Open Project Manager" })

@@ -15,7 +15,7 @@ return {
   },
   opts = {
     window = {
-      width = 20,
+      -- width = 20,
     },
     filesystem = {
       -- window = {
