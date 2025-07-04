@@ -17,7 +17,16 @@ local lsp = {
   end,
 }
 
-local navic = { "navic", color_correction = "static", navic_opts = { highlight = true } }
+local filename_arrow = {
+  function()
+    return " "
+  end,
+  cond = function()
+    return 0 ~= string.len(require("nvim-navic").get_location())
+  end,
+}
+
+local navic = { "navic", color_correction = "dynamic", navic_opts = { highlight = true } }
 
 local config = {
   options = {
@@ -26,7 +35,7 @@ local config = {
   },
   sections = {
     lualine_a = { { "mode", separator = { left = "", right = "" }, right_padding = 2 } },
-    lualine_b = { "filename", navic },
+    lualine_b = { "filename", filename_arrow, navic },
     lualine_c = {},
     lualine_x = {
       "filetype",

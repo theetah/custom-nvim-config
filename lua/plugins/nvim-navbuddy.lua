@@ -28,6 +28,7 @@ return {
           Boolean = " ",
           Object = " ",
           Class = " ",
+          Field = " ",
         },
         separator = "   ",
       },
@@ -45,6 +46,7 @@ return {
       String = " ",
       Object = " ",
       Class = " ",
+      Field = " ",
     },
   },
 }
