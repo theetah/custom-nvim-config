@@ -13,6 +13,10 @@ return {
   opts = {
     options = {
       always_show_bufferline = true,
+      enforce_regular_tabs = true,
+      indicator = {
+        style = "underline",
+      },
       offsets = {
         {
           filetype = "neo-tree",
@@ -20,6 +24,11 @@ return {
           highlight = "Directory",
           text_align = "left",
         },
+      },
+    },
+    highlights = {
+      buffer_selected = {
+        sp = vim.g.TabLineSel, -- WHY is this a global variable?! Shouldn't it be stored in a table?
       },
     },
   },

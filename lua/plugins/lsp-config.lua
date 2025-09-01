@@ -76,7 +76,8 @@ return {
 
         -- Fuzzy find all the symbols in your current document.
         --  Symbols are things like variables, functions, types, etc.
-        map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+        --  TODO: change this keybind to something else; <leader>d enters debug mode
+        -- map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 
         -- Fuzzy find all the symbols in your current workspace.
         --  Similar to document symbols, except searches over your entire project.
@@ -164,8 +165,6 @@ return {
       -- But for many setups, the LSP (`tsserver`) will work just fine
       -- tsserver = {},
       --
-
-      ts_ls = {},
 
       lua_ls = {
         -- cmd = {...},

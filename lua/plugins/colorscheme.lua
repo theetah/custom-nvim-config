@@ -5,6 +5,7 @@ return {
     overrides = function()
       return {
         CursorLine = { bg = "#272733" },
+        TabLineSel = { bg = "#957fb8" },
       }
     end,
   },

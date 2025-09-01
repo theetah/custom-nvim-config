@@ -1,71 +1,102 @@
--- credit to shadmansaleh and glepnir for this lsp snippet, straight from evil_lualine
-local icon_inactive = "󰲜  "
-local icon_active = "󰱔  "
-local lsp = {
-  function()
-    local msg = "No LSP Active"
-    local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
-    local clients = vim.lsp.get_clients()
-    if next(clients) == nil then
-      return icon_inactive .. msg
-    end
-    for _, client in ipairs(clients) do
-      local filetypes = client.config.filetypes
-      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return icon_active .. client.name
-      end
-    end
-    return icon_inactive .. msg
-  end,
-}
-
-local filename_arrow = {
-  function()
-    return " "
-  end,
-  cond = function()
-    return 0 ~= string.len(require("nvim-navic").get_location())
-  end,
-}
-
-local navic = { "navic", color_correction = "dynamic", navic_opts = { highlight = true } }
-
-local config = {
-  options = {
-    component_separators = "",
-    section_separators = { left = "", right = "" },
-  },
-  sections = {
-    lualine_a = { { "mode", separator = { left = "", right = "" }, right_padding = 2 } },
-    lualine_b = { "filename", filename_arrow, navic },
-    lualine_c = {},
-    lualine_x = {
-      "filetype",
-    },
-    lualine_y = {
-      lsp,
-    },
-    lualine_z = {
-      "branch",
-      { "progress", separator = { left = "", right = "" }, left_padding = 2 },
-    },
-  },
-  inactive_sections = {
-    lualine_a = { "filename" },
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = { "branch" },
-  },
-  tabline = {},
-  extensions = {},
-}
-
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "nvim-tree/nvim-web-devicons", "pogyomo/submode.nvim" },
   config = function()
-    require("lualine").setup(config)
+    local lualine = require("lualine")
+    local submode = require("submode")
+    -- credit to shadmansaleh and glepnir for this lsp snippet, straight from evil_lualine
+    local icon_inactive = "󰲜  "
+    local icon_active = "󰱔  "
+    local lsp = {
+      function()
+        local msg = "No LSP Active"
+        local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+        local clients = vim.lsp.get_clients()
+        if next(clients) == nil then
+          return icon_inactive .. msg
+        end
+        for _, client in ipairs(clients) do
+          local filetypes = client.config.filetypes
+          if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+            return icon_active .. client.name
+          end
+        end
+        return icon_inactive .. msg
+      end,
+    }
+
+    local navic = { "navic", color_correction = nil, navic_opts = { highlight = true } }
+
+    local function get_submode()
+      local m = submode.mode()
+      if m then
+        return string.upper(m)
+      else
+        return nil
+      end
+    end
+
+    local debug_status = {
+      function()
+        return "󰃤"
+      end,
+      color = { fg = "#ff5d62" },
+      cond = function()
+        return get_submode() == "DEBUG"
+      end,
+    }
+
+    local opts = {
+      options = {
+        component_separators = "",
+        section_separators = { left = "", right = "" },
+      },
+      sections = {
+        lualine_a = {
+          {
+            "mode",
+            fmt = function(s)
+              return get_submode() or s
+            end,
+            -- Unfortunately, color cannot be dynamically changed during runtime.
+            separator = { left = "", right = "" },
+            right_padding = 2,
+          },
+        },
+        lualine_b = { debug_status, "filename" },
+        lualine_c = { navic },
+        lualine_x = {
+          "filetype",
+        },
+        lualine_y = {
+          "diagnostics",
+          lsp,
+        },
+        lualine_z = {
+          "branch",
+          { "progress", separator = { left = "", right = "" }, left_padding = 2 },
+        },
+      },
+      inactive_sections = {
+        lualine_a = { "filename" },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = { "branch" },
+      },
+      tabline = {},
+      extensions = {},
+    }
+
+    vim.api.nvim_create_autocmd("User", {
+      group = vim.api.nvim_create_augroup("user-event", {}),
+      pattern = { "SubmodeEnterPre", "SubmodeEnterPost", "SubmodeLeavePre", "SubmodeLeavePost" },
+      callback = function(env)
+        lualine.refresh({ place = { "statusline" } })
+      end,
+    })
+
+    lualine.setup(opts)
   end,
 }

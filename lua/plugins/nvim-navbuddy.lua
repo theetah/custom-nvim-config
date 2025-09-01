@@ -49,4 +49,7 @@ return {
       Field = " ",
     },
   },
+  init = function()
+    vim.keymap.set("n", "<leader>fl", "<cmd>Navbuddy<CR>", { desc = "Open Navbuddy" })
+  end,
 }
