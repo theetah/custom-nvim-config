@@ -1,14 +1,8 @@
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
-
 -- vim. why do i have to do this. all of this just to check if the commandbar is focused.
 local focused = false
 
--- TODO: improve commandline despawning by making a debounce/timeout system thing
-
 vim.api.nvim_create_autocmd("CmdlineEnter", {
-  desc = "Autocommand that tracks if the command line is focused",
+  desc = "Tracks when the command line is entered",
   group = vim.api.nvim_create_augroup("cmdline-focus-gained", { clear = true }),
   callback = function()
     focused = true
@@ -16,10 +10,15 @@ vim.api.nvim_create_autocmd("CmdlineEnter", {
 })
 
 vim.api.nvim_create_autocmd("CmdlineLeave", {
-  desc = "Autocommand that tracks if the command line is focused",
+  desc = "Tracks when the commandline is left. If not focused for awhile, it will clear itself.",
   group = vim.api.nvim_create_augroup("cmdline-focus-lost", { clear = true }),
   callback = function()
     focused = false
+    vim.defer_fn(function()
+      if not focused then
+        vim.cmd('echom ""')
+      end
+    end, 10000)
   end,
 })
 
@@ -28,18 +27,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
   callback = function()
     vim.highlight.on_yank()
-  end,
-})
-
-vim.api.nvim_create_autocmd("CmdlineLeave", {
-  desc = "Clear the command bar after some inactivity occurs",
-  group = vim.api.nvim_create_augroup("commandline-clear", { clear = true }),
-  -- very messy, but it works
-  callback = function()
-    vim.defer_fn(function()
-      if not focused then
-        vim.cmd('echom ""')
-      end
-    end, 10000)
   end,
 })
