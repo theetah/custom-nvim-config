@@ -5,6 +5,8 @@
 -- vim. why do i have to do this. all of this just to check if the commandbar is focused.
 local focused = false
 
+-- TODO: improve commandline despawning by making a debounce/timeout system thing
+
 vim.api.nvim_create_autocmd("CmdlineEnter", {
   desc = "Autocommand that tracks if the command line is focused",
   group = vim.api.nvim_create_augroup("cmdline-focus-gained", { clear = true }),
@@ -38,6 +40,6 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
       if not focused then
         vim.cmd('echom ""')
       end
-    end, 2000)
+    end, 10000)
   end,
 })

@@ -34,22 +34,43 @@ return {
       },
     },
   },
-  opts = {
-    lsp = { auto_attach = true },
-    window = {
-      size = { width = "75%", height = "40%" },
-      scrolloff = 2,
-    },
-    icons = {
-      Variable = " ",
-      Boolean = " ",
-      String = " ",
-      Object = " ",
-      Class = " ",
-      Field = " ",
-    },
-  },
-  init = function()
+
+  config = function()
+    -- have to set up as config function instead of passing an opts table
+    -- because otherwise we can't require the two modules below
+    local navbuddy = require("nvim-navbuddy")
+    local actions = require("nvim-navbuddy.actions")
+    local opts = {
+      lsp = { auto_attach = true },
+      window = {
+        size = { width = "75%", height = "40%" },
+        scrolloff = 2,
+      },
+      icons = {
+        Variable = " ",
+        Boolean = " ",
+        String = " ",
+        Object = " ",
+        Class = " ",
+        Field = " ",
+      },
+      mappings = {
+        ["/"] = actions.telescope({ -- Fuzzy finder at current level.
+          layout_config = { -- All options that can be
+            height = 0.60, -- passed to telescope.nvim's
+            width = 0.60, -- default can be passed here.
+            prompt_position = "top",
+            preview_width = 0.50,
+          },
+          layout_strategy = "horizontal",
+        }),
+      },
+    }
     vim.keymap.set("n", "<leader>fl", "<cmd>Navbuddy<CR>", { desc = "Open Navbuddy" })
+    navbuddy.setup(opts)
   end,
+
+  -- init = function()
+  --   vim.keymap.set("n", "<leader>fl", "<cmd>Navbuddy<CR>", { desc = "Open Navbuddy" })
+  -- end,
 }
