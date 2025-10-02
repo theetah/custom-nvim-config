@@ -166,6 +166,11 @@ return {
       -- tsserver = {},
       --
 
+      clangd = {},
+      codelldb = {},
+      cssls = {},
+      html = {},
+      jdtls = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -180,6 +185,10 @@ return {
           },
         },
       },
+      quick_lint_js = {},
+      stylua = {},
+      ty = {},
+      vtsls = {},
     }
 
     -- Ensure the servers and tools above are installed
