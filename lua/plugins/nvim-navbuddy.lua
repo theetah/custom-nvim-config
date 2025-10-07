@@ -66,11 +66,7 @@ return {
         }),
       },
     }
-    vim.keymap.set("n", "<leader>fl", "<cmd>Navbuddy<CR>", { desc = "Open Navbuddy" })
+    vim.keymap.set("n", "<leader>na", "<cmd>Navbuddy<CR>", { desc = "Open Navbuddy" })
     navbuddy.setup(opts)
   end,
-
-  -- init = function()
-  --   vim.keymap.set("n", "<leader>fl", "<cmd>Navbuddy<CR>", { desc = "Open Navbuddy" })
-  -- end,
 }
