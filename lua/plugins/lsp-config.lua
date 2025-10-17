@@ -4,7 +4,18 @@ return {
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
     { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
-    "williamboman/mason-lspconfig.nvim",
+
+    {
+      "williamboman/mason-lspconfig.nvim",
+      opts = {
+        automatic_enable = {
+          exclude = {
+            "jdtls",
+          },
+        },
+      },
+    },
+
     "WhoIsSethDaniel/mason-tool-installer.nvim",
 
     -- Useful status updates for LSP.
@@ -143,6 +154,14 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
+    local native_servers = {
+      jdtls = {},
+    }
+
+    for srv, _ in pairs(native_servers) do
+      vim.lsp.enable(srv)
+    end
+
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
     --
@@ -152,7 +171,7 @@ return {
     --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-    local servers = {
+    local mason_servers = {
       -- clangd = {},
       -- gopls = {},
       -- pyright = {},
@@ -170,7 +189,7 @@ return {
       codelldb = {},
       cssls = {},
       html = {},
-      jdtls = {},
+      -- jdtls = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -190,6 +209,8 @@ return {
       ty = {},
       vtsls = {},
     }
+
+    local servers = vim.tbl_deep_extend("force", native_servers, mason_servers)
 
     -- Ensure the servers and tools above are installed
     --  To check the current status of installed tools and/or manually install
