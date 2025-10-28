@@ -26,6 +26,10 @@ return {
     }
 
     local navic = { "navic", color_correction = nil, navic_opts = { highlight = true } }
+    -- local left_separator = ""
+    -- local right_separator = ""
+    local left_separator = ""
+    local right_separator = ""
 
     local function get_submode()
       local m = submode.mode()
@@ -49,7 +53,7 @@ return {
     local opts = {
       options = {
         component_separators = "",
-        section_separators = { left = "", right = "" },
+        section_separators = { left = left_separator, right = right_separator },
       },
       sections = {
         lualine_a = {
@@ -59,7 +63,7 @@ return {
               return get_submode() or s
             end,
             -- Unfortunately, color cannot be dynamically changed during runtime.
-            separator = { left = "", right = "" },
+            separator = { left = left_separator, right = right_separator },
             right_padding = 2,
           },
         },
@@ -74,7 +78,7 @@ return {
         },
         lualine_z = {
           "branch",
-          { "progress", separator = { left = "", right = "" }, left_padding = 2 },
+          { "progress", separator = { left = left_separator, right = right_separator }, left_padding = 2 },
         },
       },
       inactive_sections = {

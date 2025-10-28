@@ -33,6 +33,7 @@ function module:setup()
 
       -- 💀
       "-configuration",
+      -- "/home/hache/.jdtls/config_linux",
       "/home/hache/.local/share/nvim/mason/packages/jdtls/config_linux",
       -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
       -- Must point to the                      Change to one of `linux`, `win` or `mac`
@@ -69,6 +70,17 @@ function module:setup()
   }
   -- This starts a new client & server,
   -- or attaches to an existing client & server depending on the `root_dir`.
+
+  --[[
+  -- So for some reason, nvim-jdtls' start_or_attach() call can sometimes break,
+  -- causing the server to not be initialized upon opening a java file.
+  -- It appears the table passed here is passed through so many subsequent function calls,
+  -- that it seems to lose most of its contents at some point (or even become nil.)
+  -- However, while this issue occurs often, it does not occur consistently.
+  -- So I have to pcall and try again if it doesn't work at the first time.
+  -- There is no documentation online about such a bug. And I am rather upset
+  -- that it is not easily reproducible. That is all.
+  --]]
   require("jdtls").start_or_attach(config)
 end
 
