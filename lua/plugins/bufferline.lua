@@ -27,11 +27,12 @@ return {
         },
       },
     },
-    -- highlights = {
-    --   buffer_selected = {
-    --     sp = vim.g.BufferLineTabSelected, -- WHY is this a global variable?! Shouldn't it be stored in a table?
-    --   },
-    -- },
+    highlights = {
+      buffer_selected = {
+        -- sp = vim.g.BufferLineTabSelected, -- WHY is this a global variable?! Shouldn't it be stored in a table?
+        italic = false,
+      },
+    },
   },
   config = function(_, opts)
     vim.opt.termguicolors = true

@@ -56,6 +56,7 @@ return {
         section_separators = { left = left_separator, right = right_separator },
       },
       sections = {
+
         lualine_a = {
           {
             "mode",
@@ -67,20 +68,26 @@ return {
             right_padding = 2,
           },
         },
+
         lualine_b = { debug_status, "filename" },
         lualine_c = { navic },
+
         lualine_x = {
           "filetype",
         },
+
         lualine_y = {
           "diagnostics",
+          -- "lsp_status",
           lsp,
         },
+
         lualine_z = {
           "branch",
           { "progress", separator = { left = left_separator, right = right_separator }, left_padding = 2 },
         },
       },
+
       inactive_sections = {
         lualine_a = { "filename" },
         lualine_b = {},
