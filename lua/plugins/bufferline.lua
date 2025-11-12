@@ -14,7 +14,7 @@ return {
   opts = {
     options = {
       always_show_bufferline = true,
-      enforce_regular_tabs = true,
+      -- enforce_regular_tabs = true,
       indicator = {
         style = "underline",
       },

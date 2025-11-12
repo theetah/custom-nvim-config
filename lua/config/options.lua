@@ -52,3 +52,19 @@ end
 vim.schedule(function()
   vim.opt.clipboard = "unnamedplus"
 end)
+
+-- ### User-defined Commands ###
+
+-- Why?
+-- Well, occasionally, vim-sleuth will occasionally override tabstop, especially in
+-- tandem with other plugins like leetcode.nvim.
+-- This command is present to easily override this behavior, as the value of
+-- tabstop is typically changed to be different than this config's during runtime.
+vim.api.nvim_create_user_command(
+  "EnfInd",
+  "set tabstop=" .. options.bo.tabstop, --.. " shiftwidth=" .. options.bo.shiftwidth,
+  {
+    nargs = 0,
+    desc = "Enforce indent. Good for pesky files that make vim-sleuth a bit finnicky.",
+  }
+)

@@ -54,6 +54,9 @@ return {
       options = {
         component_separators = "",
         section_separators = { left = left_separator, right = right_separator },
+        disabled_filetypes = {
+          "neo-tree filesystem",
+        },
       },
       sections = {
 
@@ -78,8 +81,8 @@ return {
 
         lualine_y = {
           "diagnostics",
-          -- "lsp_status",
-          lsp,
+          "lsp_status",
+          -- lsp,
         },
 
         lualine_z = {
