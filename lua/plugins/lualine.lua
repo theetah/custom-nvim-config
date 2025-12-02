@@ -25,7 +25,7 @@ return {
       end,
     }
 
-    local navic = { "navic", color_correction = nil, navic_opts = { highlight = true } }
+    local navic = { "navic", color_correction = "dynamic", navic_opts = { highlight = true } }
     -- local left_separator = ""
     -- local right_separator = ""
     local left_separator = ""
@@ -55,7 +55,9 @@ return {
         component_separators = "",
         section_separators = { left = left_separator, right = right_separator },
         disabled_filetypes = {
-          "neo-tree filesystem",
+          "neo-tree",
+          "trouble",
+          "aerial",
         },
       },
       sections = {
@@ -92,12 +94,12 @@ return {
       },
 
       inactive_sections = {
-        lualine_a = { "filename" },
-        lualine_b = {},
+        lualine_a = {},
+        lualine_b = { "filename" },
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = { "branch" },
+        lualine_z = { "branch", "progress" },
       },
       tabline = {},
       extensions = {},
