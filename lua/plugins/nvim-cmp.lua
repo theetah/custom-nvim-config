@@ -22,6 +22,32 @@ return { -- Autocompletion
           end,
         },
       },
+      config = function()
+        local ls = require("luasnip")
+        local s = ls.snippet
+        local t = ls.text_node
+        local i = ls.insert_node
+
+        ls.add_snippets("java", {
+          s("printf", {
+            t("System.out.printf("),
+            i(1, "format"),
+            t(", "),
+            i(2, "args"),
+            t(");"),
+          }),
+          s("print", {
+            t("System.out.print("),
+            i(1, ""),
+            t(");"),
+          }),
+          s("println", {
+            t("System.out.println("),
+            i(1, ""),
+            t(");"),
+          }),
+        })
+      end,
     },
     "saadparwaiz1/cmp_luasnip",
 
