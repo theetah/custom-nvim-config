@@ -1,5 +1,5 @@
 return {
-  -- enabled = false,
+  enabled = false,
   "akinsho/bufferline.nvim",
   event = "VeryLazy",
   keys = {
@@ -13,6 +13,7 @@ return {
   },
   opts = {
     options = {
+      padding = 0,
       always_show_bufferline = true,
       -- enforce_regular_tabs = true,
       indicator = {
@@ -30,6 +31,7 @@ return {
     },
     highlights = {
       buffer_selected = {
+        -- Below line only works for theme implementations like kanagawa.nvim, iirc
         -- sp = vim.g.BufferLineTabSelected, -- WHY is this a global variable?! Shouldn't it be stored in a table?
         italic = false,
       },

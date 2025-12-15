@@ -23,5 +23,23 @@ return {
     vim.api.nvim_set_hl(0, "IndentBlanklineFocused", { fg = "#858886" })
     -- nvim-cmp
     vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#323435", fg = "#81a2be" })
+    -- other stuff
+    vim.api.nvim_set_hl(0, "MatchParen", { bg = "#585958" })
+
+    -- mini.tabline
+    -- - `MiniTablineCurrent` - buffer is current (has cursor in it). fg=#b5bd68 bg=#282a2e
+    -- - `MiniTablineVisible` - buffer is visible (displayed in some window). fg=#b5bd68 bg=#282a2e
+    -- - `MiniTablineHidden` - buffer is hidden (not displayed). fg=#969896 bg=#282a2e
+    -- - `MiniTablineModifiedCurrent` - buffer is modified and current. fg=#c5c8c6 bg=#373b41
+    -- - `MiniTablineModifiedVisible` - buffer is modified and visible. fg=#c5c8c6 bg=#373b41
+    -- - `MiniTablineModifiedHidden` - buffer is modified and hidden. fg=#b4b7b4 bg=#282a2e
+    -- - `MiniTablineFill` - unused right space of tabline. fg=#c5c8c6 bg=#1d1f21
+    -- - `MiniTablineTabpagesection` - section with tabpage information.
+    -- - `MiniTablineTrunc` - truncation symbols indicating more left/right tabs.
+    vim.api.nvim_set_hl(0, "MiniTablineCurrent", { fg = "#c5c8c6", bg = "#373b41" })
+    vim.api.nvim_set_hl(0, "MiniTablineVisible", { link = "MiniTablineCurrent" })
+    vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", { fg = "#f0c674", bg = "#373b41" })
+    vim.api.nvim_set_hl(0, "MiniTablineModifiedVisible", { link = "MiniTablineModifiedCurrent" })
+    vim.api.nvim_set_hl(0, "MiniTablineModifiedHidden", { fg = "#f0c674", bg = "#282a2e" })
   end,
 }
