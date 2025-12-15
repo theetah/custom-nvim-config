@@ -13,7 +13,6 @@ return {
   },
   opts = {
     options = {
-      padding = 0,
       always_show_bufferline = true,
       -- enforce_regular_tabs = true,
       indicator = {

@@ -1,7 +1,6 @@
 return { -- Collection of various small independent plugins/modules
   "nvim-mini/mini.nvim",
   config = function()
-    local wk = require("which-key")
     -- Better Around/Inside textobjects
     --
     -- Examples:
@@ -40,17 +39,6 @@ return { -- Collection of various small independent plugins/modules
     vim.keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "next buffer" })
     vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "previous buffer" })
     vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "delete current buffer" })
-    -- Tabline highlight changes
-
-    -- - `MiniTablineCurrent` - buffer is current (has cursor in it).
-    -- - `MiniTablineVisible` - buffer is visible (displayed in some window).
-    -- - `MiniTablineHidden` - buffer is hidden (not displayed).
-    -- - `MiniTablineModifiedCurrent` - buffer is modified and current.
-    -- - `MiniTablineModifiedVisible` - buffer is modified and visible.
-    -- - `MiniTablineModifiedHidden` - buffer is modified and hidden.
-    -- - `MiniTablineFill` - unused right space of tabline.
-    -- - `MiniTablineTabpagesection` - section with tabpage information.
-    -- - `MiniTablineTrunc` - truncation symbols indicating more left/right tabs.
 
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim

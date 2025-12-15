@@ -23,9 +23,6 @@ return {
     vim.api.nvim_set_hl(0, "IndentBlanklineFocused", { fg = "#858886" })
     -- nvim-cmp
     vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#323435", fg = "#81a2be" })
-    -- other stuff
-    vim.api.nvim_set_hl(0, "MatchParen", { bg = "#585958" })
-
     -- mini.tabline
     -- - `MiniTablineCurrent` - buffer is current (has cursor in it). fg=#b5bd68 bg=#282a2e
     -- - `MiniTablineVisible` - buffer is visible (displayed in some window). fg=#b5bd68 bg=#282a2e
@@ -41,5 +38,7 @@ return {
     vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", { fg = "#f0c674", bg = "#373b41" })
     vim.api.nvim_set_hl(0, "MiniTablineModifiedVisible", { link = "MiniTablineModifiedCurrent" })
     vim.api.nvim_set_hl(0, "MiniTablineModifiedHidden", { fg = "#f0c674", bg = "#282a2e" })
+    -- other stuff
+    vim.api.nvim_set_hl(0, "MatchParen", { bg = "#585958" })
   end,
 }
