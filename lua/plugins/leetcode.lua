@@ -14,7 +14,7 @@ return {
     },
   },
   opts = {
-    lang = "c",
+    lang = "java", -- used to be C but memory management is apparently too much for me
     image_support = true,
   },
 }

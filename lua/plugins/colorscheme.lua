@@ -18,6 +18,15 @@ return {
   -- },
   config = function()
     vim.cmd.colorscheme("base16-tomorrow-night")
+    -- base colorscheme tweaks
+    vim.api.nvim_set_hl(0, "MatchParen", { bg = "#585958" })
+    -- NOTE: so... lualine won't unlink the hl groups for command & normal,
+    -- even when I declare them within the importing file... why is it designed like this?!
+    -- vim.api.nvim_set_hl(0, "lualine_a_command", { fg = "#282a2e", bg = "#f0c674" })
+
+    -------------------
+    -- plugins below --
+    -------------------
     -- indent-blankline
     vim.api.nvim_set_hl(0, "IndentBlanklineUnfocused", { fg = "#323332" })
     vim.api.nvim_set_hl(0, "IndentBlanklineFocused", { fg = "#858886" })
@@ -38,7 +47,5 @@ return {
     vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", { fg = "#f0c674", bg = "#373b41" })
     vim.api.nvim_set_hl(0, "MiniTablineModifiedVisible", { link = "MiniTablineModifiedCurrent" })
     vim.api.nvim_set_hl(0, "MiniTablineModifiedHidden", { fg = "#f0c674", bg = "#282a2e" })
-    -- other stuff
-    vim.api.nvim_set_hl(0, "MatchParen", { bg = "#585958" })
   end,
 }

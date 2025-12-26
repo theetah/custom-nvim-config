@@ -54,11 +54,7 @@ return {
       options = {
         component_separators = "",
         section_separators = { left = left_separator, right = right_separator },
-        disabled_filetypes = {
-          "neo-tree",
-          "trouble",
-          "aerial",
-        },
+        -- disabled_filetypes = { "neo-tree", "trouble", "aerial", },
       },
       sections = {
 
@@ -102,7 +98,7 @@ return {
         lualine_z = { "branch", "progress" },
       },
       tabline = {},
-      extensions = {},
+      extensions = { "trouble", "nvim-dap-ui", "lazy", "neo-tree", "toggleterm" },
     }
 
     vim.api.nvim_create_autocmd("User", {

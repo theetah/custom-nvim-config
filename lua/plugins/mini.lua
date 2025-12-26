@@ -36,9 +36,9 @@ return { -- Collection of various small independent plugins/modules
     -- Tabline
     require("mini.tabline").setup()
     -- Tabline keymaps
-    vim.keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "next buffer" })
-    vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "previous buffer" })
-    vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "delete current buffer" })
+    vim.keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = "next buffer" })
+    vim.keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "previous buffer" })
+    vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "delete current buffer" })
 
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
