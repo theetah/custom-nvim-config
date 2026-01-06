@@ -20,6 +20,12 @@ return {
     vim.cmd.colorscheme("base16-tomorrow-night")
     -- base colorscheme tweaks
     vim.api.nvim_set_hl(0, "MatchParen", { bg = "#585958" })
+    vim.api.nvim_set_hl(0, "SignColumn", { bg = "#282a2e" })
+    vim.api.nvim_set_hl(0, "LineNr", { bg = "#282a2e" })
+    vim.api.nvim_set_hl(0, "GitGutterAdd", { bg = "#282a2e", fg = "#b5bd68" })
+    vim.api.nvim_set_hl(0, "GitGutterDelete", { bg = "#282a2e", fg = "#81a2be" })
+    vim.api.nvim_set_hl(0, "GitGutterChange", { bg = "#282a2e", fg = "#cc6666" })
+    vim.api.nvim_set_hl(0, "GitGutterChangeDelete", { bg = "#282a2e", fg = "#b294bb" })
     -- NOTE: so... lualine won't unlink the hl groups for command & normal,
     -- even when I declare them within the importing file... why is it designed like this?!
     -- vim.api.nvim_set_hl(0, "lualine_a_command", { fg = "#282a2e", bg = "#f0c674" })
