@@ -1,1 +1,1 @@
-moved to [my dotfiles](github.com/theetah/stowfiles)
+moved to [my dotfiles](https://github.com/theetah/stowfiles)
